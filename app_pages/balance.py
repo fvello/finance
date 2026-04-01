@@ -5,7 +5,17 @@ import sys
 import datetime
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from auth import require_auth
-from settings import get_balance, get_balance_history, update_balance, get_credit_payment_methods, get_immediate_payment_methods, get_expense_categories
+from settings import (
+    get_balance,
+    get_balance_history,
+    update_balance,
+    get_credit_payment_methods,
+    get_immediate_payment_methods,
+    get_expense_categories,
+    get_credit_card_payments_total,
+    get_credit_card_payments_total_by_card,
+    update_card_payment_status,
+)
 
 user = require_auth()
 
@@ -37,16 +47,20 @@ if os.path.exists(current_month_file):
     
     if "Card" in df.columns:
         credit_expenses = df[df["Card"].isin(credit_methods)]
-        credit_to_pay = credit_expenses["Value"].sum()
+        credit_to_pay_raw = credit_expenses["Value"].sum()
+        paid_credit_total = get_credit_card_payments_total(user, current_month)
+        credit_to_pay = max(0.0, credit_to_pay_raw - paid_credit_total)
         
         for card in credit_methods:
             card_total = credit_expenses[credit_expenses["Card"] == card]["Value"].sum()
-            if card_total > 0:
-                credit_cards_breakdown[card] = card_total
+            card_paid = get_credit_card_payments_total_by_card(user, card, current_month)
+            card_unpaid = max(0.0, card_total - card_paid)
+            if card_total > 0 or card_paid > 0:
+                credit_cards_breakdown[card] = card_unpaid
         
         immediate_expenses = df[df["Card"].isin(immediate_methods)]
         month_spending_immediate = immediate_expenses["Value"].sum()
-        month_spending_credit = credit_to_pay
+        month_spending_credit = credit_to_pay_raw
         
         for method in immediate_methods:
             method_total = immediate_expenses[immediate_expenses["Card"] == method]["Value"].sum()
@@ -196,7 +210,7 @@ with col_pending2:
 
 with col_pending3:
     st.metric("📈 Net Pending", f"R$ {net_pending:,.2f}", 
-              delta=f"+R$ {net_pending:,.2f}" if net_pending >= 0 else f"R$ {net_pending:,.2f}")
+            delta=f"+R$ {net_pending:,.2f}" if net_pending >= 0 else f"R$ {net_pending:,.2f}")
 
 st.markdown("---")
 
@@ -284,21 +298,25 @@ with col_pay_left:
             with col_val:
                 st.markdown(f"**R$ {card_total:,.2f}**")
             with col_pay:
-                with st.popover("💵 Pay"):
-                    pay_card_amount = st.number_input(
-                        "Amount",
-                        format="%.2f",
-                        min_value=0.01,
-                        max_value=float(card_total),
-                        value=float(card_total),
-                        key=f"pay_{card_name.replace(' ', '_')}"
-                    )
-                    if st.button("Confirm", key=f"btn_{card_name.replace(' ', '_')}", type="primary"):
-                        if pay_card_amount > 0:
-                            desc = f"Credit card payment - {card_name}"
-                            update_balance(user, -pay_card_amount, desc, "expense")
-                            st.success(f"Paid R$ {pay_card_amount:,.2f}!")
-                            st.rerun()
+                if card_total > 0:
+                    with st.popover("💵 Pay"):
+                        pay_card_amount = st.number_input(
+                            "Amount",
+                            format="%.2f",
+                            min_value=0.01,
+                            max_value=float(card_total),
+                            value=float(card_total),
+                            key=f"pay_{card_name.replace(' ', '_')}"
+                        )
+                        if st.button("Confirm", key=f"btn_{card_name.replace(' ', '_')}", type="primary"):
+                            if pay_card_amount > 0:
+                                desc = f"Credit card payment - {card_name}"
+                                update_balance(user, -pay_card_amount, desc, "expense")
+                                update_card_payment_status(user, card_name, pay_card_amount)
+                                st.success(f"Paid R$ {pay_card_amount:,.2f}!")
+                                st.rerun()
+                else:
+                    st.caption("✅ Paid")
 
 with col_pay_right:
     st.markdown("**💸 Immediate Payments**")
@@ -331,6 +349,7 @@ if credit_to_pay > 0:
             if pay_submitted and pay_amount > 0:
                 desc = pay_description if pay_description else "Credit card payment - All"
                 update_balance(user, -pay_amount, desc, "expense")
+                update_card_payment_status(user, "All", pay_amount, desc)
                 st.success(f"Paid R$ {pay_amount:,.2f}!")
                 st.rerun()
 

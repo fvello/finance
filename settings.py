@@ -131,6 +131,61 @@ def update_balance(user, amount, description, transaction_type):
     
     return new_balance
 
+
+def get_credit_payments_path(user):
+    return os.path.join("csv", user, "credit_payments.json")
+
+
+def get_credit_payments(user):
+    payments_path = get_credit_payments_path(user)
+    if os.path.exists(payments_path):
+        with open(payments_path, "r") as f:
+            data = json.load(f)
+        return data.get("payments", [])
+    return []
+
+
+def save_credit_payments(user, payments):
+    payments_path = get_credit_payments_path(user)
+    os.makedirs(os.path.dirname(payments_path), exist_ok=True)
+    with open(payments_path, "w") as f:
+        json.dump({"payments": payments}, f, indent=2)
+
+
+def update_card_payment_status(user, card_name, amount, description=""):
+    payments = get_credit_payments(user)
+    payment = {
+        "date": datetime.date.today().strftime("%Y-%m-%d"),
+        "month": datetime.date.today().strftime("%Y-%m"),
+        "card": card_name,
+        "amount": round(amount, 2),
+        "description": description
+    }
+    payments.insert(0, payment)
+    save_credit_payments(user, payments)
+    return payment
+
+
+def get_credit_card_payments_total(user, month=None):
+    if not month:
+        month = datetime.date.today().strftime("%Y-%m")
+    payments = get_credit_payments(user)
+    return sum(p.get("amount", 0) for p in payments if p.get("month") == month)
+
+
+def get_credit_card_payments_total_by_card(user, card_name, month=None):
+    if card_name == "All":
+        return get_credit_card_payments_total(user, month)
+    if not month:
+        month = datetime.date.today().strftime("%Y-%m")
+    payments = get_credit_payments(user)
+    return sum(
+        p.get("amount", 0)
+        for p in payments
+        if p.get("month") == month and p.get("card") == card_name
+    )
+
+
 def get_balance_history(user, limit=100):
     data = get_balance_data(user)
     return data.get("transactions", [])[:limit]
