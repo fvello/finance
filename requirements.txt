@@ -1,0 +1,7 @@
+bcrypt==5.0.0
+extra-streamlit-components==0.1.81
+pandas==2.3.3
+plotly==6.6.0
+PyYAML==6.0.3
+streamlit==1.55.0
+streamlit-authenticator==0.4.2

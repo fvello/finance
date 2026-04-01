@@ -1,0 +1,14 @@
+cookie:
+  expiry_days: 30
+  key: random_signature_key
+  name: finance_auth_cookie
+credentials:
+  usernames:
+    fabricio:
+      email: contato@fvello.com.br
+      name: Fabricio
+      password: $2b$12$2/FATkusvFGDPNsfp/BdbueBy.Bm.cGsRufGWQKzsm57688HR2JM2
+    teste:
+      email: teste@teste
+      name: teste
+      password: $2b$12$6wSoNVd58yu9VyA0oM5zX.B8atDzwHaTU9fnJKxmw8/Jdeq.yi6Z.

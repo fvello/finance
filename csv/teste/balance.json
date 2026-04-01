@@ -1,0 +1,131 @@
+{
+  "current_balance": 927.0,
+  "transactions": [
+    {
+      "date": "2026-03-14",
+      "description": "teste - cash",
+      "amount": -123.0,
+      "type": "expense",
+      "balance_after": 927.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "teste - teste",
+      "amount": 50.0,
+      "type": "income",
+      "balance_after": 1050.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Balance set to R$ 1,000.00",
+      "amount": 368.99,
+      "type": "adjustment",
+      "balance_after": 1000.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Manual addition",
+      "amount": 0.01,
+      "type": "adjustment",
+      "balance_after": 631.01
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Credit card payment - All",
+      "amount": -123.0,
+      "type": "expense",
+      "balance_after": 631.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Credit card payment - All",
+      "amount": -123.0,
+      "type": "expense",
+      "balance_after": 754.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Credit card payment - teste",
+      "amount": -123.0,
+      "type": "expense",
+      "balance_after": 877.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "teste - teste (to teste)",
+      "amount": -123.0,
+      "type": "expense",
+      "balance_after": 1000.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "teste - teste (from teste)",
+      "amount": 123.0,
+      "type": "income",
+      "balance_after": 1123.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Manual removal",
+      "amount": -0.01,
+      "type": "adjustment",
+      "balance_after": 1000.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Manual addition",
+      "amount": 100.0,
+      "type": "adjustment",
+      "balance_after": 1000.01
+    },
+    {
+      "date": "2026-03-14",
+      "description": "Manual addition",
+      "amount": 0.01,
+      "type": "adjustment",
+      "balance_after": 900.01
+    },
+    {
+      "date": "2026-03-14",
+      "description": "[REVERSED] teste - teste (from teste)",
+      "amount": -123.0,
+      "type": "adjustment",
+      "balance_after": 900.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "teste - teste (from teste)",
+      "amount": 123.0,
+      "type": "income",
+      "balance_after": 1023.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "[REVERSED] teste - teste (to teste)",
+      "amount": 123.0,
+      "type": "adjustment",
+      "balance_after": 900.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "[REVERSED] teste - teste (from teste)",
+      "amount": -123.0,
+      "type": "adjustment",
+      "balance_after": 777.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "gas - cash",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": 900.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "update",
+      "amount": 1000.0,
+      "type": "adjustment",
+      "balance_after": 1000.0
+    }
+  ]
+}

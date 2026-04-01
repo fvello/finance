@@ -1,0 +1,187 @@
+{
+  "current_balance": 1134.0,
+  "transactions": [
+    {
+      "date": "2026-03-14",
+      "description": "att balance",
+      "amount": 217.0,
+      "type": "adjustment",
+      "balance_after": 1134.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "teste - Azul",
+      "amount": -123.0,
+      "type": "expense",
+      "balance_after": 917.0
+    },
+    {
+      "date": "2026-03-14",
+      "description": "teste - Azul",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": 1040.0
+    },
+    {
+      "date": "2026-03-13",
+      "description": "teste",
+      "amount": -100.0,
+      "type": "adjustment",
+      "balance_after": 1140.0
+    },
+    {
+      "date": "2026-03-13",
+      "description": "teste",
+      "amount": 100.0,
+      "type": "adjustment",
+      "balance_after": 1240.0
+    },
+    {
+      "date": "2026-03-12",
+      "description": "att",
+      "amount": 1140.0,
+      "type": "adjustment",
+      "balance_after": 1140.0
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Balance set to R$ 0.00",
+      "amount": -1072.21,
+      "type": "adjustment",
+      "balance_after": 0.0
+    },
+    {
+      "date": "2026-03-12",
+      "description": "att - Dinheiro",
+      "amount": -68.0,
+      "type": "expense",
+      "balance_after": 1072.21
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Balance set to R$ 1,140.21",
+      "amount": 2200.0,
+      "type": "adjustment",
+      "balance_after": 1140.21
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Internet - Dinheiro",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": -1059.79
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Academia - Dinheiro",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": -959.79
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Pagamento Nesi - Dinheiro",
+      "amount": -2000.0,
+      "type": "expense",
+      "balance_after": -859.79
+    },
+    {
+      "date": "2026-03-12",
+      "description": "att saldo",
+      "amount": 1140.21,
+      "type": "adjustment",
+      "balance_after": 1140.21
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Balance set to R$ 0.00",
+      "amount": -839.95,
+      "type": "adjustment",
+      "balance_after": 0.0
+    },
+    {
+      "date": "2026-03-12",
+      "description": "teste - Dinheiro",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": 839.95
+    },
+    {
+      "date": "2026-03-12",
+      "description": "teste - Dinheiro",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": 939.95
+    },
+    {
+      "date": "2026-03-12",
+      "description": "teste - Dinheiro",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": 1039.95
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Balance set to R$ 1,139.95",
+      "amount": 2200.6,
+      "type": "adjustment",
+      "balance_after": 1139.95
+    },
+    {
+      "date": "2026-03-12",
+      "description": "internet - Dinheiro",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": -1060.65
+    },
+    {
+      "date": "2026-03-12",
+      "description": "pagamento academia - Dinheiro",
+      "amount": -100.0,
+      "type": "expense",
+      "balance_after": -960.65
+    },
+    {
+      "date": "2026-03-12",
+      "description": "[REVERSED] servi\u00e7o do carro - servi\u00e7os (from Thiago)",
+      "amount": -400.0,
+      "type": "adjustment",
+      "balance_after": -860.65
+    },
+    {
+      "date": "2026-03-12",
+      "description": "servi\u00e7o do carro - servi\u00e7os (from Thiago)",
+      "amount": 400.0,
+      "type": "income",
+      "balance_after": -460.65
+    },
+    {
+      "date": "2026-03-12",
+      "description": "[REVERSED] pagamento mensal - emprestimo (from Matheus)",
+      "amount": -2500.0,
+      "type": "adjustment",
+      "balance_after": -860.65
+    },
+    {
+      "date": "2026-03-12",
+      "description": "pagamento mensal - emprestimo (from Matheus)",
+      "amount": 2500.0,
+      "type": "income",
+      "balance_after": 1639.35
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Pagamento Nesi - Dinheiro",
+      "amount": -2000.0,
+      "type": "expense",
+      "balance_after": -860.65
+    },
+    {
+      "date": "2026-03-12",
+      "description": "Balance set to R$ 1,139.35",
+      "amount": 1139.35,
+      "type": "adjustment",
+      "balance_after": 1139.35
+    }
+  ]
+}
