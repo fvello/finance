@@ -5,7 +5,7 @@ from yaml.loader import SafeLoader
 import os
 
 AUTH_CONFIG_PATH = "auth.yaml"
-RESET_KEY = "eusouumaputinhacomalzheimer"
+RESET_KEY = os.getenv("RESETKEY")
 
 def load_auth_config():
     if not os.path.exists(AUTH_CONFIG_PATH):
